@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import instanceAxios from "../axios/AxiosInstance";
 import bookMap from "../type/bookMap";
 import { FaTrash } from "react-icons/fa";
+import Link from "next/link";
+import UrlToBookId from "../functions/UrlToBookId";
+import Loading from "../loading";
 
 function GetAllComponent() {
   const [filteredBooks, setFilteredBooks] = useState<bookMap[]>([]);
@@ -39,49 +42,42 @@ function GetAllComponent() {
     }
   }, [searchTerm, books]);
 
-  if (loading) return <p>Loading..</p>;
+  if (loading) return <Loading />;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div>
       <input
         type="text"
-        className="border-2 rounded mb-4 p-2 text-gray-600 outline-none"
-        placeholder=" 🔍 Procurar um livro"
+        className="border rounded mb-4 p-2 text-gray-600 outline-none"
+        placeholder=" 🔍 Try find a book"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <div className="cardHover flex flex-col justify-center lg:w-2xl rounded-xl border">
+      <div className=" flex gap-2  flex-wrap justify-center lg:w-2xl rounded-xl ">
         {noItensMessage ? (
-          <p className="text-center text-gray-500">Nenhum livro encontrado</p>
+          <p className="text-center text-gray-500">No Book Found</p>
         ) : (
           filteredBooks.map((book) => (
-            <div
-              key={book.id}
-              className="relative mb-4 border rounded-lg overflow-hidden"
-            >
-              <img
-                src={
-                  book.image ||
-                  "https://media.graphassets.com/AjUybfxSHGQeRkHqQbgg"
-                }
-                alt={book.title}
-                className="w-full lg:w-96 h-96 object-cover"
-              />
-              <div className="border px-2 py-1">
-                <p className="text-md font-bold">
-                  {book.title} -{" "}
-                  <span className="text-sm text-zinc-600">
-                    {book.publication_year}
-                  </span>
+            <div key={book.id} className="relative mb-4   overflow-hidden">
+              <Link href={UrlToBookId(book)}>
+                <img
+                  src={
+                    book.image ||
+                    "https://media.graphassets.com/AjUybfxSHGQeRkHqQbgg"
+                  }
+                  alt={book.title}
+                  title="go to see more"
+                  className=" w-32 lg:w-48 h-48 lg:h-60 rounded-lg object-cover cursor-pointer transition-all  hover:transition-all hover:scale-75 "
+                />
+              </Link>
+              <div className=" px-2 py-1">
+                <p className="text-md font-bold">{book.title}</p>
+                <p className="text-zinc-600 tracking-widest">
+                  {" "}
+                  {book.publication_year}
                 </p>
                 <p className="text-sm">{book.author}</p>
-              </div>
-              <p className="mt-4 text-gray-800 px-2">{book.description}</p>
-              <div className="mt-8 border w-full flex justify-center">
-                <button className="p-3 text-white bg-red-800 rounded w-full px-12">
-                  Excluir Livro
-                </button>
               </div>
             </div>
           ))
