@@ -1,5 +1,6 @@
 import React from "react";
 import { FcPlus } from "react-icons/fc";
+import GetAllComponent from "./GetAllComponent";
 
 function page() {
   return (
@@ -21,26 +22,7 @@ function page() {
           </p>
         </div>
         <div className=" mt-4 flex flex-col lg:flex-row gap-12 lg:gap-8">
-          <div className="cardHover flex flex-col justify-center   max-w-full  lg:w-2xl rounded-xl border rounded">
-            <img
-              src="https://m.media-amazon.com/images/I/718bxXoq9gL._AC_UF1000,1000_QL80_.jpg"
-              alt=""
-              className="w-full lg:w-96 h-96 object-cover"
-            />
-            <div className="border px-2">
-              {" "}
-              <p className="text-lg font-bold">A bela e a Fera</p>
-              <p className="text-sm ">Daniel Silva</p>
-            </div>
-            <p className="mt-4 text-gray-800 px-2">
-              Conheça o incrivel mundo desse livro!
-            </p>
-            <div className="mt-8 border border w-full flex justify-center">
-              <button className=" p-2 text-white button bg-green-600 rounded w-full px-12 ">
-                Ver mais
-              </button>
-            </div>
-          </div>
+          <GetAllComponent />
         </div>
       </main>
     </div>
