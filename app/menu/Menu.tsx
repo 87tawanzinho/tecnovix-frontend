@@ -25,10 +25,10 @@ function Menu() {
             onClick={() => setModal(false)}
           />
           <div className="fixed inset-0 flex justify-center items-center z-50 ">
-            <div className="bg-white h-64 w-96 p-4 rounded mx-2">
+            <div className=" relative bg-white h-64 w-96 rounded p-2 mx-2 ">
               <div className="flex justify-between font-bold">
                 <h2 className="text-xl text-slate-950  ">
-                  Create a new Book 📔
+                  Insert a new book 📔
                 </h2>
 
                 <button
@@ -39,7 +39,19 @@ function Menu() {
                   X
                 </button>
               </div>
-              <button onClick={() => setModal(false)}>Close</button>
+              <div className="mt-2 flex flex-col gap-2">
+                <input
+                  type="text"
+                  className="border p-1 outline-none text-zinc-800"
+                  placeholder="Name of the book"
+                />
+              </div>
+              <button
+                onClick={() => setModal(false)}
+                className="tracking-widest bg-emerald-800 p-3 w-full text-white absolute bottom-0 start-0 "
+              >
+                Insert
+              </button>
             </div>
           </div>
         </>
