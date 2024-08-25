@@ -1,7 +1,7 @@
 import React from "react";
 import { FcPlus } from "react-icons/fc";
 import GetAllComponent from "./GetAllComponent";
-import Menu from "../menu/menu";
+import Menu from "../menu/Menu";
 
 function page() {
   return (

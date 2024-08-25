@@ -59,7 +59,7 @@ function GetAllComponent() {
           <p className="text-center text-gray-500">No Book Found</p>
         ) : (
           filteredBooks.map((book) => (
-            <div key={book.id} className="relative mb-4   overflow-hidden">
+            <div key={book.id} className=" mb-4   overflow-hidden ">
               <Link href={UrlToBookId(book)}>
                 <img
                   src={

@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import bookMap from "../type/bookMap";
-import Menu from "../menu/menu";
+import Menu from "../menu/Menu";
 import { IoPersonSharp } from "react-icons/io5";
 import { GiCalendarHalfYear } from "react-icons/gi";
 
