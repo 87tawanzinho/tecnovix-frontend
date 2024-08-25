@@ -27,7 +27,23 @@ body {
   transition: 3ms ease-in;
 }
 
+.button-selection {
+  background: rgb(239, 248, 198);
+
+  color: rgb(27, 27, 25);
+}
+
+.button-selection:hover {
+  transition: ease-in-out 0.1s;
+  background: rgb(84, 52, 97);
+  color: white;
+}
+
 .cardHover:hover {
   opacity: 0.9;
   transition: 0.1s ease-in-out;
+}
+
+.bg-green {
+  background: #d3dbac;
 }
