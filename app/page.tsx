@@ -16,7 +16,9 @@ export default function Home() {
           </span>{" "}
           ❤️
         </h2>
-        <p>Obrigado por dar uma oportunidade a esse baiano!</p>
+        <p className="text-center text-sm">
+          Obrigado por dar uma oportunidade a esse baiano!
+        </p>
         <Link href={"/dashboard"}>
           <button className="border border-2 border-gray-800 px-8 p-2 rounded mt-8  tracking-widest font-bold button hover:text-white">
             Começar

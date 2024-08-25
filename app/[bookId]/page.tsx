@@ -37,7 +37,7 @@ function page({
               <GiCalendarHalfYear />
               <p>{bookInformation.publication_year}</p>
             </div>
-            <p className="mt-4 w-full lg:w-96  border border-zinc-300 p2">
+            <p className="mt-4 w-full lg:w-96  border border-zinc-300 p-2">
               {bookInformation.description}
             </p>
 
