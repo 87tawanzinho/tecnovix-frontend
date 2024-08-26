@@ -6,20 +6,26 @@ import { GiCalendarHalfYear } from "react-icons/gi";
 import { IoPersonSharp } from "react-icons/io5";
 import { Book, BookVolumeInfo, Cep, ChooseBook } from "../type/BooksMenu";
 import ChooseBookComponent from "./ChooseBookComponent";
+import instanceAxios from "../axios/AxiosInstance";
 
 function Menu() {
   const [modal, setModal] = useState(false);
   const [query, setQuery] = useState("");
   const [chooseBook, setChooseBook] = useState<ChooseBook>({
+    id: "",
     title: "",
     image: "",
     publishedDate: 0,
+    language: "",
+    description: "",
+    country: "",
     authors: [],
   });
   const [cepQuery, setCepQuery] = useState("");
   const [cep, setCep] = useState<Cep>({});
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(false);
+  const [error, setErrorMessage] = useState("");
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -72,6 +78,35 @@ function Menu() {
     fetchCep();
   }, [cepQuery]);
 
+  const insertBook = async () => {
+    setErrorMessage("");
+    if (!chooseBook.title) {
+      return setErrorMessage("Your don't choose the book");
+    }
+
+    if (!cep.bairro) {
+      return setErrorMessage("Your CEP are correct?");
+    }
+
+    try {
+      const response = await instanceAxios.post("books", {
+        title: chooseBook.title,
+        author: chooseBook.authors[0],
+        image: chooseBook.image,
+        description: chooseBook.description,
+        publishedDate: chooseBook.publishedDate,
+        language: chooseBook.language,
+        // cep
+        city: cep.localidade,
+        state: cep.uf,
+        neighborhood: cep.bairro,
+      });
+
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="flex gap-2 items-center w-full p-6 mb-1 border shadow border-2 justify-between lg:justify-normal">
       <h2 className="text-xl">
@@ -93,7 +128,7 @@ function Menu() {
             onClick={() => setModal(false)}
           />
           <div className="fixed inset-0 flex justify-center items-center z-50">
-            <div className="relative bg-white h-auto w-96 rounded p-2 mx-2">
+            <div className="relative bg-white h-96 lg:h-auto w-11/12 lg:w-96 rounded-2xl p-4 mx-2 overflow-auto">
               <div className="flex justify-between font-bold border-b">
                 <h2 className="text-xl text-slate-950">Insert a new book 📔</h2>
 
@@ -106,12 +141,18 @@ function Menu() {
                     setCepQuery("");
                     setQuery("");
                     setChooseBook({
+                      id: "",
                       title: "",
                       authors: [],
                       image: "",
+                      language: "",
+                      country: "",
+                      description: "",
+
                       publishedDate: 0,
                     });
                     setModal(false);
+                    setErrorMessage("");
                   }}
                 >
                   X
@@ -145,10 +186,14 @@ function Menu() {
                             `${book.volumeInfo.title} by ${book.volumeInfo.authors}`
                           );
                           setChooseBook({
+                            id: book.id,
                             title: book.volumeInfo.title,
                             authors: book.volumeInfo.authors,
                             image: book.volumeInfo.imageLinks?.thumbnail,
+                            description: book.volumeInfo.description,
                             publishedDate: book.volumeInfo.publishedDate,
+                            language: book.volumeInfo.language,
+                            country: book.saleInfo.country,
                           });
                         }}
                       >
@@ -195,8 +240,11 @@ function Menu() {
                   </p>
                 </div>
               )}
-
-              <button className="w-full bg-green text-black font-bold tracking-widest p-2 rounded button hover:text-white">
+              {error && <p className="text-red-800 text-sm">{error}</p>}
+              <button
+                className="w-full bg-green text-black font-bold tracking-widest p-2 rounded button hover:text-white"
+                onClick={() => insertBook()}
+              >
                 Insert
               </button>
             </div>

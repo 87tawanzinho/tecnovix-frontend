@@ -59,7 +59,10 @@ function GetAllComponent() {
           <p className="text-center text-gray-500">No Book Found</p>
         ) : (
           filteredBooks.map((book) => (
-            <div key={book.id} className=" mb-4   overflow-hidden ">
+            <div
+              key={book.id}
+              className=" mb-4   overflow-hidden  w-32 lg:w-32"
+            >
               <Link href={UrlToBookId(book)}>
                 <img
                   src={
@@ -68,14 +71,14 @@ function GetAllComponent() {
                   }
                   alt={book.title}
                   title="go to see more"
-                  className=" w-32 lg:w-48 h-48 lg:h-60 rounded-lg object-cover cursor-pointer transition-all  hover:transition-all hover:scale-75 "
+                  className=" w-32 lg:w-32  lg:h-48 rounded-lg object-cover cursor-pointer transition-all  hover:transition-all hover:scale-75 "
                 />
               </Link>
               <div className=" px-2 py-1">
-                <p className="text-md font-bold">{book.title}</p>
-                <p className="text-zinc-600 tracking-widest">
+                <p className="text-md font-bold  ">{book.title}</p>
+                <p className="text-zinc-600 tracking-wide">
                   {" "}
-                  {book.publication_year}
+                  {book.publishedDate}
                 </p>
                 <p className="text-sm">{book.author}</p>
               </div>

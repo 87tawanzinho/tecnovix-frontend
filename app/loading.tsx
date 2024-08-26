@@ -2,7 +2,7 @@ export default function Loading() {
   return (
     <div className="mt-20 flex flex-col justify-center items-center gap-4">
       <img
-        src="https://c0.wallpaperflare.com/preview/579/665/206/apply-button-contractor-employ-me.jpg"
+        src="https://www.icegif.com/wp-content/uploads/2023/07/icegif-1268.gif"
         alt="hire me"
         className="h-40 w-40"
       />

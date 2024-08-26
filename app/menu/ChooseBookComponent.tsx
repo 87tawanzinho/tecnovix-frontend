@@ -3,6 +3,7 @@ import React from "react";
 import { ChooseBook } from "../type/BooksMenu";
 import { IoPersonSharp } from "react-icons/io5";
 import { GiCalendarHalfYear } from "react-icons/gi";
+import { MdLanguage } from "react-icons/md";
 
 interface ChooseBookComponentProps {
   chooseBook: ChooseBook;
@@ -20,10 +21,14 @@ const ChooseBookComponent: React.FC<ChooseBookComponentProps> = ({
               {chooseBook.title}
             </p>
             <div className="text-sm flex items-center gap-2">
-              <IoPersonSharp /> <p>{chooseBook.authors.join(", ")}</p>
+              <IoPersonSharp /> <p>{chooseBook.authors}</p>
             </div>
             <div className="text-sm flex items-center gap-2">
               <GiCalendarHalfYear /> <p>{chooseBook.publishedDate}</p>
+            </div>
+            <div className="text-sm flex items-center gap-2">
+              <MdLanguage />
+              <p className="uppercase">{chooseBook.language}</p>
             </div>
           </div>
           <img

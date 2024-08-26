@@ -4,7 +4,11 @@ type bookMap = {
   title: string;
   description: string;
   author: string;
-  publication_year: number;
+  publishedDate: string;
+  language: string;
+  city: string;
+  state: string;
+  neighborhood: string;
 };
 
 export default bookMap;

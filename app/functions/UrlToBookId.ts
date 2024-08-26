@@ -9,7 +9,13 @@ const UrlToBookId = (bookId: bookMap) => {
     bookId.description
   )}&image=${encodeURIComponent(
     bookId.image
-  )}&publication_year=${encodeURIComponent(bookId.publication_year)}`;
+  )}&publishedDate=${encodeURIComponent(
+    bookId.publishedDate
+  )}&language=${encodeURIComponent(bookId.language)}&city=${encodeURIComponent(
+    bookId.city
+  )}&state=${encodeURIComponent(
+    bookId.state
+  )}&neighborhood=${encodeURIComponent(bookId.neighborhood)}`;
 };
 
 export default UrlToBookId;
