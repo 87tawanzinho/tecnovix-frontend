@@ -83,10 +83,12 @@ function Menu() {
     setDisableButton(true);
     setErrorMessage("");
     if (!chooseBook.title) {
+      setDisableButton(false);
       return setErrorMessage("Your don't choose the book");
     }
 
     if (!cep.bairro) {
+      setDisableButton(false);
       return setErrorMessage("Your CEP are correct?");
     }
 
