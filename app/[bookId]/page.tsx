@@ -3,12 +3,13 @@ import React from "react";
 import Link from "next/link";
 import bookMap from "../type/bookMap";
 import Menu from "../menu/Menu";
-import { IoPersonSharp } from "react-icons/io5";
+import { IoPersonSharp, IoReturnDownBack } from "react-icons/io5";
 import { GiCalendarHalfYear } from "react-icons/gi";
 import { FaCity } from "react-icons/fa";
 import { TbBuildingEstate } from "react-icons/tb";
 import { BsArrowRight } from "react-icons/bs";
 import { GrLanguage } from "react-icons/gr";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 function page({
   params,
@@ -24,11 +25,14 @@ function page({
     <div>
       <Menu />
       {bookName ? (
-        <div className=" relative container border border-2 border-gray-400 rounded p-4 mx-auto mt-10 flex flex-col lg:flex-row justify-center lg:justify-start gap-0 lg:gap-8 items-center lg:items-start">
+        <div className=" relative container  border-none lg:border border-2 border-gray-400 rounded p-4 mx-auto mt-10 flex flex-col lg:flex-row justify-center lg:justify-start gap-0 lg:gap-8 items-center lg:items-start">
+          <Link href={"/dashboard"} className="hover:opacity-60">
+            <IoReturnDownBack size={32} />
+          </Link>
           <img
             src={`${bookInformation.image}`}
             alt=""
-            className="h-48 w-48 object-cover rounded"
+            className="h-48 w-32 object-cover rounded"
           />
 
           <div className="mt-10 lg:mt-0 px-2">

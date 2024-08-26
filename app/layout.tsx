@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import {
+  Inter,
+  Montserrat,
+  Open_Sans,
+  Poppins,
+  Roboto,
+} from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Montserrat({ subsets: ["latin"], weight: ["500"] });
 
 export const metadata: Metadata = {
   title: "Central de Livros",

@@ -47,13 +47,15 @@ function GetAllComponent() {
 
   return (
     <div>
-      <input
-        type="text"
-        className="border rounded mb-4 p-2 text-gray-600 outline-none"
-        placeholder=" 🔍 Try find a book"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
+      <div className="flex justify-center lg:justify-start ">
+        <input
+          type="text"
+          className="border rounded mb-4 p-2 text-gray-600 outline-none  "
+          placeholder=" 🔍 Try find a book"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
       <div className=" flex gap-2  flex-wrap justify-center lg:w-2xl rounded-xl ">
         {noItensMessage ? (
           <p className="text-center text-gray-500">No Book Found</p>
@@ -74,8 +76,8 @@ function GetAllComponent() {
                   className=" w-32 lg:w-32  lg:h-48 rounded-lg object-cover cursor-pointer transition-all  hover:transition-all hover:scale-75 "
                 />
               </Link>
-              <div className=" px-2 py-1">
-                <p className="text-md font-bold  ">{book.title}</p>
+              <div className=" px-2 py-1 ">
+                <p className="text-md font-bold line-clamp-2 ">{book.title}</p>
                 <p className="text-zinc-600 tracking-wide">
                   {" "}
                   {book.publishedDate}

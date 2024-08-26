@@ -11,6 +11,7 @@ import instanceAxios from "../axios/AxiosInstance";
 function Menu() {
   const [modal, setModal] = useState(false);
   const [query, setQuery] = useState("");
+  const [disableButton, setDisableButton] = useState(false);
   const [chooseBook, setChooseBook] = useState<ChooseBook>({
     id: "",
     title: "",
@@ -79,6 +80,7 @@ function Menu() {
   }, [cepQuery]);
 
   const insertBook = async () => {
+    setDisableButton(true);
     setErrorMessage("");
     if (!chooseBook.title) {
       return setErrorMessage("Your don't choose the book");
@@ -102,9 +104,11 @@ function Menu() {
         neighborhood: cep.bairro,
       });
 
-      console.log(response);
+      setModal(false);
+      window.location.reload();
+      response;
     } catch (error) {
-      console.log(error);
+      setDisableButton(false);
     }
   };
   return (
@@ -242,10 +246,13 @@ function Menu() {
               )}
               {error && <p className="text-red-800 text-sm">{error}</p>}
               <button
-                className="w-full bg-green text-black font-bold tracking-widest p-2 rounded button hover:text-white"
+                className={`w-full bg-green text-black font-bold tracking-widest p-2 rounded button hover:text-white ${
+                  disableButton && "opacity-60"
+                }`}
+                disabled={disableButton}
                 onClick={() => insertBook()}
               >
-                Insert
+                {disableButton ? "Await...  " : "Insert"}
               </button>
             </div>
           </div>
